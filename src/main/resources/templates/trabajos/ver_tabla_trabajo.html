@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gestion de tabla historial laboral</title>
+<link rel="stylesheet" type="text/css" href="static/css/style_tabla.css" th:href="@{/css/style_tabla.css}">
+</head>
+
+<body>
+	<h1>Historial laboral</h1>
+	<a th:href="@{/user}">Volver al menu user</a>
+	<table>
+		<tr style="border: 1px;">
+			<th>id</th>
+			<th>tipo</th>
+			<th>ocupacion</th>
+			<th>fecha de inicio</th>
+			<th>fecha de fin</th>
+			<th>id de la persona</th>
+			<th>descripcion</th>
+		</tr>
+		<tr th:if="${listaTrabajo.empty}">
+			<td>No hay trabajos en la tabla</td>
+		</tr>
+		<tr th:each="trabajo : ${listaTrabajo}">
+            <td th:text="${trabajo.idTrabajo}"></td>
+            <td th:text="${trabajo.tipo}"></td>
+            <td th:text="${trabajo.ocupacion}"></td>
+            <td th:text="${trabajo.fechaInicio}"></td>
+			<td th:text="${trabajo.fechaFin}"></td>
+			<td th:text="${trabajo.personaId}"></td>
+			<td th:text="${trabajo.descripcion}"></td>
+        </tr>
+		
+	</table>
+</body>
+
+</html>

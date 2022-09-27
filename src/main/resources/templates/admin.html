@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin menu</title>
+</head>
+<body>
+    <h1>Bienvenido, inicio sesion como admin puede ver el contenido y modificarlo</h1>
+    <a th:href="@{/menu}">Volver al menu de seleccion de usuario (user o admin)</a>
+    <ol>
+        <li> <a th:href="@{/admin/ver_tabla_persona_admin}"> Ver tabla persona</a> </li>
+        <li> <a th:href="@{/admin/ver_tabla_educacion_admin}"> Ver tabla educacion</a> </li>
+        <li> <a th:href="@{/admin/ver_tabla_conocimiento_admin}"> Ver tabla conocimiento</a> </li>
+        <li> <a th:href="@{/admin/ver_tabla_proyecto_admin}"> Ver tabla mis proyectos</a> </li>
+        <li> <a th:href="@{/admin/ver_tabla_trabajo_admin}"> Ver tabla mis trabajos</a> </li>
+    </ol>
+</body>
+</html>

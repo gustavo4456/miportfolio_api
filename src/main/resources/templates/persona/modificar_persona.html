@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+        <title>Datos de la Persona</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+        <h1>Datos de la Persona</h1>
+        <a th:href="@{/admin/ver_tabla_persona_admin}">Regresar</a>
+        <br/>
+        <form th:action="@{/admin/agregar_persona/guardar}" method="post" th:object="${persona}">
+            <input type="hidden" name="idPersona" th:field="${persona.idPersona}"/>
+            <br/>
+            <label for="nombre">Nombre:</label>
+            <input type="text" name="nombre" th:field="${persona.nombre}"/>
+            <br/>
+            <label for="apellido">Apellido:</label>
+            <input type="text" name="apellido" th:field="${persona.apellido}"/>
+            <br/>
+            <label for="correo">Correo:</label>
+            <input type="email" name="correo" th:field="${persona.correo}"/>
+            <br/>
+            <label for="celular">Celular:</label>
+            <input type="tel" name="celular" th:field="${persona.celular}"/>
+            <br/>
+            <label for="fecha_nacimiento">Fecha de nacimiento (AAAA-MM-DD):</label>
+            <input type="text" name="fecha_nacimiento" th:field="${persona.fechaNacimiento}"/>
+            <br/>
+            <label for="presentacion_principal">Presentacion principal:</label>
+            <input type="text" name="presentacion_principal" th:field="${persona.presentacionPrincipal}"/>
+            <br/>
+            <label for="presentacion_secundaria">Presentacion secundaria:</label>
+            <input type="text" name="presentacion_secundaria" th:field="${persona.presentacionSecundaria}"/>
+            <br/>
+            <input type="submit" name="guardar" value="Guardar"/>
+        </form>
+    </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gestion de tabla educacion</title>
+<link rel="stylesheet" type="text/css" href="static/css/style_tabla.css" th:href="@{/css/style_tabla.css}">
+</head>
+
+<body>
+	<h1>Educacion</h1>
+	 <a th:href="@{/admin/agregar_educacion}">Crear Educacion</a>
+	 <a th:href="@{/admin}">Volver al menu admin</a>
+	<table>
+		<tr style="border: 1px;">
+			<th>id</th>
+			<th>institucion</th>
+			<th>nivel</th>
+			<th>estado</th>
+			<th>descripcion</th>
+			<th>Id persona</th>
+			<th>Editar</th>
+			<th>Eliminar</th>
+		</tr>
+		<tr th:if="${listaEducacion.empty}">
+			<td>No hay personas en la tabla</td>
+		</tr>
+		<tr th:each="educacion : ${listaEducacion}">
+            <td th:text="${educacion.idEducacion}"></td>
+            <td th:text="${educacion.institucion}"></td>
+            <td th:text="${educacion.nivel}"></td>
+            <td th:text="${educacion.estado}"></td>
+            <td th:text="${educacion.descripcion}"></td>
+            <td th:text="${educacion.personaId}"></td>
+            <td><a th:href="@{/admin/editar_educacion/} + ${educacion.idEducacion}" th:text="Editar"/></td>
+			<td><a th:href="@{/admin/eliminar_educacion(idEducacion=${educacion.idEducacion})}" th:text="Eliminar"/></td>
+        </tr>
+       
+		
+	</table>
+</body>
+
+</html>

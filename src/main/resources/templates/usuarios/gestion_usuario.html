@@ -1,0 +1,81 @@
+<html>
+<head lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+
+</head>
+<body>
+	<span>Informacion</span>
+	<form th:action="@{/guardar}" th:object="${usuario}" method="POST" id="userForm">
+		<div style="border: 1px solid black; padding:20px;">
+		<span th:if="${usuario.id !=null}"><input type="text" th:field="${usuario.id}" readonly><br/></span>
+		
+		<label th:text="Username"></label><br/>
+		<input type="text" placeholder="Username" th:field="${usuario.username}"/><br/>
+		
+		<label th:text="Password"></label><br/>
+		<input type="text" placeholder="Password" th:field="${usuario.password}"/><br/>
+
+        <label th:text="Enabled"></label><br/>
+        <select th:field="${usuario.enabled}">
+            <option th:value="1">Habilitado</option>
+            <option th:value="0">Deshabilitado</option>
+            
+        </select>
+        <br/>
+        <br/>
+        
+		
+		<label th:text="Authority"></label><br/>
+		<select th:field="${usuario.authority}" multiple="multiple">
+			<option th:each="rol : ${autoridades}" th:value="${rol.id}" th:text="${rol.authority}">
+			</option>
+		</select><br/>
+
+        
+        <br/>
+
+		<input type="Submit" th:value="${usuario.id != null }?'Guardar Usuario':'Crear Usuario'" th:class="button"/>
+		<th:block th:if="${usuario.id !=null}">
+			<a th:href="@{/usuarios/gestion_usuario}">Cancel</a>	
+		</th:block>
+
+         </div>
+	</form>
+    
+
+	<table border="1">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Usuario</th>
+				<th>Password</th>
+				<th>enabled</th>			
+                <th>Roles</th>
+                <th>Opciones</th>
+			</tr>
+		</thead>
+		<tbody>
+            <tr th:if="${listaUsuario.empty}">
+                <td>No hay usuarios en la tabla</td>
+            </tr>
+			<tr th:each="usuario : ${listaUsuario}">
+				<td th:text="${usuario.id}"></td>
+				<td th:text="${usuario.username}"></td>
+				<td th:text="${usuario.password}"></td>
+                <td th:text="${usuario.enabled}"></td>
+				<td>
+					<th:block th:each="autoridades,iter: ${usuario.authority}">
+    					<label th:text="${autoridades.authority}"></label>
+   						<th:block th:if="${!iter.last}">, </th:block>
+  					</th:block>
+				</td>
+				<td><a th:href="@{'/editarUsuario/'+ ${usuario.id}}"> Editar </a> | <a th:href="@{'/eliminarUsuario/' + ${usuario.id}}">Eliminar</a></td>
+			</tr>
+		
+		</tbody>
+	
+	
+	</table>
+</body>
+</html>

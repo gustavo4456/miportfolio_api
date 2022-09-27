@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+        <title>Datos del conocimiento de la persona</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+        <h1>Datos del conocimiento de la persona</h1>
+        <a th:href="@{/admin/ver_tabla_conocimiento_admin}">Regresar</a>
+        <br/>
+        <form th:action="@{/admin/agregar_conocimiento/guardar}" method="post" th:object="${conocimiento}">
+            <input type="hidden" name="idConocimiento" th:field="${conocimiento.idConocimiento}"/>
+            <br/>
+            <label for="nombre">Nombre:</label>
+            <input type="text" name="nombre" th:field="${conocimiento.nombre}"/>
+            <br/>
+            <label for="nivel">Nivel:</label>
+            <input type="text" name="nivel" th:field="${conocimiento.nivel}"/>
+            <br/>
+            <label for="persona_id">Id de la persona:</label>
+            <input type="number" name="persona_id" th:field="${conocimiento.personaId}"/>
+            <br/>
+            <input type="submit" name="guardar" value="Guardar"/>
+        </form>
+    </body>
+</html>

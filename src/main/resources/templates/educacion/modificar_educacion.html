@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+        <title>Datos de la educacion de la persona</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+        <h1>Datos de la educacion de la persona</h1>
+        <a th:href="@{/admin/ver_tabla_educacion_admin}">Regresar</a>
+        <br/>
+        <form th:action="@{/admin/agregar_educacion/guardar}" method="post" th:object="${educacion}">
+            <input type="hidden" name="idEducacion" th:field="${educacion.idEducacion}"/>
+            <br/>
+            <label for="institucion">Institucion:</label>
+            <input type="text" name="institucion" th:field="${educacion.institucion}"/>
+            <br/>
+            <label for="nivel">Nivel:</label>
+            <input type="text" name="nivel" th:field="${educacion.nivel}"/>
+            <br/>
+            <label for="estado">Estado:</label>
+            <input type="text" name="estado" th:field="${educacion.estado}"/>
+            <br/>
+            <label for="descripcion">descripcion:</label>
+            <input type="text" name="descripcion" th:field="${educacion.descripcion}"/>
+            <br/>
+            <label for="id_persona">Id persona:</label>
+            <input type="number" name="id_persona" th:field="${educacion.personaId}"/>
+            <br/>
+            <input type="submit" name="guardar" value="Guardar"/>
+        </form>
+    </body>
+</html>
